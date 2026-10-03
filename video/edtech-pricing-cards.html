@@ -1,0 +1,478 @@
+<title>EdTech Pricing Cards</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a stack of 16:9 video cards, each sized by its own width (cqw) so text and charts scale together.
+   Look: grainy paper, tight heavy grotesque, small meta rows, yellow text-selection highlight as the one accent. */
+:root {
+  --paper: #e8e8e5;
+  --paper-2: #f3f3f0;
+  --ink: #1a1a19;
+  --ink-2: #4a4a47;
+  --ink-3: #85857f;
+  --line: #c9c9c4;
+  --hl: #f6e6b0;
+  --hl-handle: #d9a200;
+  --pos: #23744a;
+  --neg: #c03a2b;
+  --stage: #161615;
+  --stage-ink: #d9d9d4;
+  --display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+body { background: var(--stage); color: var(--stage-ink); font-family: var(--body); }
+.deck { max-width: 1100px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 32px; }
+.deck > header { display: grid; gap: 6px; }
+.deck h1 { font: 700 24px/1.15 var(--display); margin: 0; letter-spacing: -0.01em; }
+.deck header p { margin: 0; font-size: 14px; line-height: 1.5; color: #9a9a94; max-width: 62ch; }
+figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+figcaption { font: 600 12px/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; color: #8d8d87; display: flex; gap: 10px; }
+figcaption b { color: var(--stage-ink); font-weight: 600; }
+
+/* The card */
+.card {
+  container-type: inline-size;
+  aspect-ratio: 16 / 9; width: 100%; position: relative; overflow: hidden;
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color: var(--ink); font-family: var(--body);
+  display: grid; grid-template-rows: auto 1fr auto;
+  padding: 4cqw 5cqw 3.4cqw;
+}
+.meta { display: flex; justify-content: space-between; font-size: 1.45cqw; color: var(--ink-2); letter-spacing: 0.01em; }
+.stage { display: grid; align-content: center; gap: 2.2cqw; min-height: 0; }
+.foot { display: flex; justify-content: space-between; align-items: center; font-size: 1.45cqw; }
+.who { display: flex; align-items: center; gap: 1cqw; }
+.av { width: 3.6cqw; height: 3.6cqw; border-radius: 50%; background: var(--hl-handle); display: grid; place-items: center; font: 700 1.7cqw var(--display); color: var(--ink); }
+.who small { display: block; font-size: 1.2cqw; color: var(--ink-2); }
+.who strong { font: 700 1.55cqw var(--display); }
+.save { display: flex; align-items: center; gap: 0.8cqw; font: 600 1.45cqw var(--body); letter-spacing: 0.03em; }
+.save i { width: 1.5cqw; height: 2.1cqw; background: var(--ink); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+
+h2, .big { font: 800 5.6cqw/1.04 var(--display); letter-spacing: -0.035em; margin: 0; text-wrap: balance; }
+.big.xl { font-size: 8.6cqw; }
+.sub { font: 600 2.4cqw/1.3 var(--body); color: var(--ink-2); margin: 0; max-width: 38ch; letter-spacing: -0.01em; }
+.sub.wide { max-width: 52ch; }
+.k { font: 600 1.45cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.num { font-variant-numeric: tabular-nums; }
+.neg { color: var(--neg); } .pos { color: var(--pos); }
+
+/* text-selection highlight with handles */
+.sel { background: var(--hl); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.1em; position: relative; }
+.sel::before, .sel::after { content: ""; display: inline-block; width: 0.34em; height: 1em; vertical-align: -0.1em; }
+.sel::before { margin-right: 0.1em; margin-left: -0.28em;
+  background: radial-gradient(circle at 50% 14%, var(--hl-handle) 0.16em, transparent 0.17em), linear-gradient(var(--hl-handle), var(--hl-handle)) 50% 0 / 0.05em 100% no-repeat; }
+.sel::after { margin-left: 0.1em; margin-right: -0.28em;
+  background: radial-gradient(circle at 50% 86%, var(--hl-handle) 0.16em, transparent 0.17em), linear-gradient(var(--hl-handle), var(--hl-handle)) 50% 0 / 0.05em 100% no-repeat; }
+
+/* tables */
+table.t { border-collapse: collapse; width: 100%; font-size: 2.3cqw; }
+.t th { text-align: left; font: 600 1.4cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 0.9cqw; }
+.t td, .t th { padding-block: 0.95cqw; border-bottom: 1px solid var(--line); }
+.t td:not(:first-child), .t th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.t td:first-child { color: var(--ink-2); font-weight: 500; }
+.t tr:last-child td { border-bottom: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; align-items: center; }
+.two.skew { grid-template-columns: 0.9fr 1.1fr; }
+
+/* feature chips */
+.chips { display: flex; flex-wrap: wrap; gap: 1cqw; }
+.chip { font: 600 1.9cqw var(--body); padding: 0.8cqw 1.6cqw; background: var(--paper-2); border: 1px solid var(--line); border-radius: 99px; }
+.pricetag { font: 800 11cqw/1 var(--display); letter-spacing: -0.05em; }
+.pricetag small { font: 600 2.6cqw var(--body); letter-spacing: 0; color: var(--ink-2); margin-left: 1cqw; }
+
+/* stacked share bar */
+.share { display: flex; gap: 2px; height: 9cqw; }
+.share div { display: flex; align-items: flex-end; padding: 1.2cqw 1.6cqw; font: 800 4cqw/1 var(--display); letter-spacing: -0.03em; }
+.share .s1 { width: 65%; background: var(--ink); color: var(--paper-2); border-radius: 0.6cqw 0 0 0.6cqw; }
+.share .s2 { width: 35%; background: var(--hl-handle); color: var(--ink); border-radius: 0 0.6cqw 0.6cqw 0; }
+.legend { display: flex; gap: 3cqw; font: 600 1.9cqw var(--body); color: var(--ink-2); }
+
+/* competitor steps */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; align-items: end; height: 24cqw; }
+.step { background: var(--paper-2); border: 1px solid var(--line); padding: 1.4cqw; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.4cqw; border-radius: 0.6cqw 0.6cqw 0 0; }
+.step b { font: 800 3.2cqw var(--display); letter-spacing: -0.03em; }
+.step span { font: 600 1.6cqw/1.25 var(--body); color: var(--ink-2); }
+.step em { font: 600 1.3cqw var(--body); font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.step.us { background: var(--ink); color: var(--paper-2); border-color: var(--ink); }
+.step.us span, .step.us em { color: #c4c4be; }
+
+/* tier cards */
+.tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; align-items: end; }
+.tier { background: var(--paper-2); border: 1px solid var(--line); border-radius: 1cqw; padding: 2cqw 2cqw 2.2cqw; display: grid; gap: 0.8cqw; }
+.tier .k { color: var(--ink-3); }
+.tier h3 { margin: 0; font: 800 3.6cqw var(--display); letter-spacing: -0.03em; }
+.tier .p { font: 800 5cqw/1 var(--display); letter-spacing: -0.04em; }
+.tier p { margin: 0; font: 500 1.8cqw/1.35 var(--body); color: var(--ink-2); }
+.tier.pro { background: var(--ink); color: var(--paper-2); border-color: var(--ink); padding-block: 3cqw; }
+.tier.pro p, .tier.pro .k { color: #c4c4be; }
+.tier.plus { padding-block: 2.6cqw; }
+
+/* guardrails */
+.rules { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4cqw 3cqw; }
+.rule { display: grid; grid-template-columns: auto 1fr; gap: 1.6cqw; align-items: baseline; padding-block: 1.1cqw; border-bottom: 1px solid var(--line); }
+.rule b { font: 800 4cqw/1 var(--display); letter-spacing: -0.04em; min-width: 7.5cqw; font-variant-numeric: tabular-nums; }
+.rule span { font: 500 1.9cqw/1.3 var(--body); color: var(--ink-2); }
+
+/* before / after bars */
+.ba { display: grid; gap: 2.4cqw; }
+.ba h4 { margin: 0 0 0.8cqw; font: 600 1.45cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.bar { display: grid; grid-template-columns: 8cqw 1fr; align-items: center; gap: 1.4cqw; margin-bottom: 0.7cqw; font: 600 1.7cqw var(--body); color: var(--ink-2); }
+.bar .track { display: flex; align-items: center; gap: 1.2cqw; }
+.bar .fill { height: 3.6cqw; border-radius: 0 0.5cqw 0.5cqw 0; background: var(--line); }
+.bar.new .fill { background: var(--ink); }
+.bar .v { font: 800 2.6cqw var(--display); letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.delta { display: flex; gap: 3cqw; }
+.delta div { display: grid; gap: 0.3cqw; }
+.delta b { font: 800 6.4cqw/1 var(--display); letter-spacing: -0.04em; }
+
+/* list */
+.list { display: grid; gap: 0; }
+.list div { display: grid; grid-template-columns: 5cqw 1fr; align-items: baseline; padding-block: 1.1cqw; border-bottom: 1px solid var(--line); font: 700 2.9cqw/1.2 var(--display); letter-spacing: -0.02em; }
+.list div:last-child { border-bottom: 0; }
+.list i { font: 600 1.6cqw var(--body); font-style: normal; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+svg text { font-family: var(--body); }
+.chartwrap { display: grid; gap: 1cqw; }
+.chartwrap h4 { margin: 0; font: 600 1.45cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+
+.tip { font-size: 13px; color: #8d8d87; line-height: 1.5; }
+@media (max-width: 520px) { .deck h1 { font-size: 20px; } }
+</style>
+
+<div class="deck">
+  <header>
+    <h1>EdTech pricing video: card deck</h1>
+    <p>16 cards in 16:9, in script order. Screenshot or screen-record each card, then drop it into your editor. Source: Toledah Case Library, illustrative data.</p>
+  </header>
+
+  <!-- 01 HOOK -->
+  <figure>
+    <figcaption><b>01</b> Hook</figcaption>
+    <div class="card">
+      <div class="meta"><span>Pricing strategy</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <div class="big xl num"><span class="neg" style="text-decoration:line-through;text-decoration-thickness:0.08em">₹2,599</span>?</div>
+        <p class="sub">The pricing model said charge <span class="sel">73% more</span>. The team ignored it, and contribution still rose 36.7%.</p>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 02 SETUP -->
+  <figure>
+    <figcaption><b>02</b> The setup</figcaption>
+    <div class="card">
+      <div class="meta"><span>The platform</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <p class="k">One plan, everything included</p>
+        <div class="pricetag num">₹1,499<small>per month</small></div>
+        <div class="chips"><span class="chip">Recorded courses</span><span class="chip">Tests</span><span class="chip">Live classes</span><span class="chip">Mentor and career support</span></div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 03 CURRENT ECONOMICS -->
+  <figure>
+    <figcaption><b>03</b> Current economics</figcaption>
+    <div class="card">
+      <div class="meta"><span>Monthly economics</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <div class="two skew">
+          <h2>A healthy business with one price for everyone.</h2>
+          <table class="t">
+            <tr><th>Metric</th><th>Current</th></tr>
+            <tr><td>Subscribers</td><td>8,000</td></tr>
+            <tr><td>Monthly revenue</td><td>₹11,992,000</td></tr>
+            <tr><td>Variable cost / subscriber</td><td>₹410</td></tr>
+            <tr><td>Monthly contribution</td><td>₹8,712,000</td></tr>
+            <tr><td>Contribution margin</td><td>72.6%</td></tr>
+            <tr><td>Monthly churn</td><td>5.8%</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 04 FORMULA -->
+  <figure>
+    <figcaption><b>04</b> The measure</figcaption>
+    <div class="card">
+      <div class="meta"><span>What we optimize</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <p class="k">Contribution</p>
+        <div class="big" style="font-size:5.6cqw">(Price − Variable cost) × Subscribers</div>
+        <p class="sub wide">Not revenue and not subscriber count. <span class="sel">Contribution</span> is what is left to run the business.</p>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 05 SEGMENTS -->
+  <figure>
+    <figcaption><b>05</b> The real problem</figcaption>
+    <div class="card">
+      <div class="meta"><span>Customer base</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <h2>Same price. Very different willingness to pay.</h2>
+        <div class="share"><div class="s1">65%</div><div class="s2">35%</div></div>
+        <div class="legend"><span>Students: more price-sensitive</span><span>Working professionals: less price-sensitive</span></div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 06 COMPETITORS -->
+  <figure>
+    <figcaption><b>06</b> The market</figcaption>
+    <div class="card">
+      <div class="meta"><span>Competitive context</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <h2>Priced like SkillPro. Delivering closer to CareerEdge.</h2>
+        <div class="steps">
+          <div class="step" style="height:46%"><em>EduMax</em><b class="num">₹999</b><span>Recorded courses</span></div>
+          <div class="step" style="height:66%"><em>SkillPro</em><b class="num">₹1,499</b><span>Courses + tests</span></div>
+          <div class="step us" style="height:82%"><em>This platform</em><b class="num">₹1,499</b><span>Courses, tests, live classes, mentor support</span></div>
+          <div class="step" style="height:100%"><em>CareerEdge</em><b class="num">₹2,299</b><span>Courses + mentor support</span></div>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 07 DEMAND -->
+  <figure>
+    <figcaption><b>07</b> How customers respond</figcaption>
+    <div class="card">
+      <div class="meta"><span>Historical price observations</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <h2 style="font-size:4.2cqw">Raise the price and fewer people join and more people leave.</h2>
+        <div class="two">
+          <div class="chartwrap"><h4>New subscribers per month</h4><svg id="c-subs" viewBox="0 0 400 230" role="img" aria-label="New subscribers per month falls from 2,350 at ₹1,199 to 1,250 at ₹1,899"></svg></div>
+          <div class="chartwrap"><h4>Monthly churn</h4><svg id="c-churn" viewBox="0 0 400 230" role="img" aria-label="Monthly churn rises from 4.7 percent at ₹1,199 to 8.3 percent at ₹1,899"></svg></div>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 08 NO OPTIMUM -->
+  <figure>
+    <figcaption><b>08</b> Why "just raise it" fails</figcaption>
+    <div class="card">
+      <div class="meta"><span>Single-plan model</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <p class="k">Professional elasticity: −0.5</p>
+        <div class="big">The math says <span class="sel">charge more, forever.</span></div>
+        <p class="sub wide">With this demand curve revenue never peaks. That comes from the assumption. It is not proof customers will pay unlimited prices.</p>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 09 EXTRAPOLATION -->
+  <figure>
+    <figcaption><b>09</b> The extrapolation</figcaption>
+    <div class="card">
+      <div class="meta"><span>Price axis, ₹ per month</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <h2 style="font-size:4.4cqw">The model's pick sits far outside the data.</h2>
+        <svg viewBox="0 0 800 250" role="img" aria-label="Observed prices span ₹1,199 to ₹1,899. The model's ₹2,599 pick is 73 percent above the current ₹1,499 and well beyond that range.">
+          <rect x="135.2" y="70" width="264.4" height="70" fill="#f6e6b0"/>
+          <text x="267" y="62" text-anchor="middle" font-size="15" font-weight="600" fill="#4a4a47">Observed range ₹1,199 to ₹1,899</text>
+          <line x1="60" y1="140" x2="740" y2="140" stroke="#85857f" stroke-width="1.5"/>
+          <g font-size="14" fill="#85857f" text-anchor="middle">
+            <line x1="60" y1="140" x2="60" y2="146" stroke="#85857f"/><text x="60" y="165">1,000</text>
+            <line x1="248.9" y1="140" x2="248.9" y2="146" stroke="#85857f"/><text x="248.9" y="165">1,500</text>
+            <line x1="437.8" y1="140" x2="437.8" y2="146" stroke="#85857f"/><text x="437.8" y="165">2,000</text>
+            <line x1="626.7" y1="140" x2="626.7" y2="146" stroke="#85857f"/><text x="626.7" y="165">2,500</text>
+          </g>
+          <path d="M248.5 104 H664" stroke="#c03a2b" stroke-width="2" fill="none" stroke-dasharray="6 5"/>
+          <text x="456" y="96" text-anchor="middle" font-size="22" font-weight="800" fill="#c03a2b">+73%</text>
+          <circle cx="248.5" cy="104" r="8" fill="#1a1a19"/>
+          <text x="248.5" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#1a1a19">Current ₹1,499</text>
+          <circle cx="513" cy="104" r="8" fill="#23744a"/>
+          <text x="513" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#23744a">Chosen Pro ₹2,199</text>
+          <circle cx="664" cy="104" r="8" fill="#fff" stroke="#c03a2b" stroke-width="3"/>
+          <text x="664" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#c03a2b">Model pick ₹2,599</text>
+        </svg>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 10 QUOTE -->
+  <figure>
+    <figcaption><b>10</b> The lesson</figcaption>
+    <div class="card">
+      <div class="meta"><span>Model confidence</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <div class="big">A model can give a precise number and <span class="sel">still be wrong about the world.</span></div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 11 BETTER QUESTION -->
+  <figure>
+    <figcaption><b>11</b> The better question</figcaption>
+    <div class="card">
+      <div class="meta"><span>Reframing the problem</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <p class="k">Instead of</p>
+        <div class="big" style="color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:0.06em">How high can we go?</div>
+        <p class="k" style="margin-top:1cqw">Ask</p>
+        <div class="big"><span class="sel">What should we charge whom, and for what?</span></div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 12 TIERS -->
+  <figure>
+    <figcaption><b>12</b> The recommended tiers</figcaption>
+    <div class="card">
+      <div class="meta"><span>Pilot pricing architecture</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <div class="tiers">
+          <div class="tier"><span class="k">Entry</span><h3>Basic</h3><div class="p num">₹1,199</div><p>Recorded courses + tests</p></div>
+          <div class="tier plus"><span class="k">Mid</span><h3>Plus</h3><div class="p num">₹1,599</div><p>Basic + live classes</p></div>
+          <div class="tier pro"><span class="k">Top</span><h3>Pro</h3><div class="p num">₹2,199</div><p>Plus + mentor and career support</p></div>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 13 GUARDRAILS -->
+  <figure>
+    <figcaption><b>13</b> The guardrails</figcaption>
+    <div class="card">
+      <div class="meta"><span>Constraints on the optimization</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <h2 style="font-size:4.4cqw">The model could not just pick the biggest number.</h2>
+        <div class="rules">
+          <div class="rule"><b>65%</b><span>Minimum contribution margin on every tier</span></div>
+          <div class="rule"><b>25%</b><span>Each tier priced at least this far above the one below</span></div>
+          <div class="rule"><b>₹1,199</b><span>Maximum price for Basic, so students stay in</span></div>
+          <div class="rule"><b>10%</b><span>Maximum effective increase for existing customers</span></div>
+          <div class="rule"><b>20%</b><span>Of professionals need a path to Pro</span></div>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 14 RESULT -->
+  <figure>
+    <figcaption><b>14</b> The result</figcaption>
+    <div class="card">
+      <div class="meta"><span>Current vs. recommended</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <div class="two skew">
+          <div class="delta"><div><span class="k">Contribution</span><b class="pos">+36.7%</b></div><div><span class="k">Subscribers</span><b class="neg">−7.9%</b></div></div>
+          <div class="ba">
+            <div>
+              <h4>Monthly contribution</h4>
+              <div class="bar"><span>Current</span><div class="track"><div class="fill" style="width:73.2%"></div></div></div>
+              <div class="bar new"><span>Pilot</span><div class="track"><div class="fill" style="width:100%"></div></div></div>
+              <div class="bar" style="margin:0"><span></span><div class="track"><span class="v">₹8.71M → ₹11.91M</span></div></div>
+            </div>
+            <div>
+              <h4>Subscribers</h4>
+              <div class="bar"><span>Current</span><div class="track"><div class="fill" style="width:100%"></div></div></div>
+              <div class="bar new"><span>Pilot</span><div class="track"><div class="fill" style="width:92.1%"></div></div></div>
+              <div class="bar" style="margin:0"><span></span><div class="track"><span class="v">8,000 → 7,367</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 15 TABLE -->
+  <figure>
+    <figcaption><b>15</b> Full comparison</figcaption>
+    <div class="card">
+      <div class="meta"><span>Model estimate</span><span>Toledah Case Library</span></div>
+      <div class="stage">
+        <div class="two skew">
+          <h2>Less volume. Stronger unit economics.</h2>
+          <table class="t">
+            <tr><th>Metric</th><th>Current</th><th>Pilot</th></tr>
+            <tr><td>Subscribers</td><td>8,000</td><td>7,367</td></tr>
+            <tr><td>Monthly revenue</td><td>₹11,992,000</td><td>₹14,929,009</td></tr>
+            <tr><td>Monthly contribution</td><td>₹8,712,000</td><td>₹11,908,443</td></tr>
+            <tr><td>Contribution margin</td><td>72.6%</td><td>79.8%</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <!-- 16 TAKEAWAYS -->
+  <figure>
+    <figcaption><b>16</b> Takeaways</figcaption>
+    <div class="card">
+      <div class="meta"><span>What this case shows</span><span>Illustrative case, constructed data</span></div>
+      <div class="stage">
+        <div class="list">
+          <div><i>1</i>Revenue isn't value. Look at contribution.</div>
+          <div><i>2</i>Segments pay different amounts.</div>
+          <div><i>3</i>Structure can matter more than the headline price.</div>
+          <div><i>4</i>Optimization informs judgment. It doesn't replace it.</div>
+          <div><i>5</i>Be skeptical of any model far outside its data.</div>
+          <div><i>6</i>Treat pricing as an experiment.</div>
+        </div>
+      </div>
+      <div class="foot"><div class="who"><div class="av">E</div><div><small>@yourhandle</small><strong>Your Name</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+
+  <p class="tip">Replace "@yourhandle" and "Your Name" in the footer of each card. The case company and figures are illustrative; credit the Toledah Case Library in your description.</p>
+</div>
+
+<script>
+(function () {
+  var prices = [1199, 1299, 1399, 1499, 1599, 1699, 1799, 1899];
+  var subs = [2350, 2180, 2040, 1920, 1770, 1610, 1430, 1250];
+  var churn = [4.7, 4.9, 5.2, 5.8, 6.1, 6.7, 7.4, 8.3];
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function line(id, ys, lo, hi, color, fmt, ticks) {
+    var svg = document.getElementById(id);
+    var L = 46, R = 18, T = 26, B = 40, W = 400, H = 230;
+    var x = function (i) { return L + (i / (prices.length - 1)) * (W - L - R); };
+    var y = function (v) { return T + (1 - (v - lo) / (hi - lo)) * (H - T - B); };
+    ticks.forEach(function (t) {
+      svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), stroke: "#c9c9c4", "stroke-width": 1 }));
+      svg.appendChild(el("text", { x: L - 8, y: y(t) + 4, "text-anchor": "end", "font-size": 12, fill: "#85857f" }, fmt(t)));
+    });
+    svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(lo), y2: y(lo), stroke: "#85857f", "stroke-width": 1.5 }));
+    prices.forEach(function (p, i) {
+      svg.appendChild(el("text", { x: x(i), y: H - 20, "text-anchor": "middle", "font-size": 11, fill: "#85857f" }, p.toLocaleString("en-US")));
+    });
+    svg.appendChild(el("text", { x: (L + W - R) / 2, y: H - 4, "text-anchor": "middle", "font-size": 11, fill: "#85857f" }, "Monthly price (₹)"));
+    var d = ys.map(function (v, i) { return (i ? "L" : "M") + x(i) + " " + y(v); }).join(" ");
+    svg.appendChild(el("path", { d: d, fill: "none", stroke: color, "stroke-width": 3, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    ys.forEach(function (v, i) {
+      svg.appendChild(el("circle", { cx: x(i), cy: y(v), r: 4.5, fill: color, stroke: "#e8e8e5", "stroke-width": 2 }));
+    });
+    var last = ys.length - 1;
+    svg.appendChild(el("text", { x: x(0) + 2, y: y(ys[0]) - 12, "font-size": 14, "font-weight": 800, fill: "#1a1a19" }, fmt(ys[0])));
+    var below = ys[last] < ys[0];
+    svg.appendChild(el("text", { x: x(last), y: y(ys[last]) + (below ? 22 : -12), "text-anchor": "end", "font-size": 14, "font-weight": 800, fill: "#1a1a19" }, fmt(ys[last])));
+  }
+  line("c-subs", subs, 1000, 2500, "#1a1a19", function (v) { return v.toLocaleString("en-US"); }, [1000, 1500, 2000, 2500]);
+  line("c-churn", churn, 4, 9, "#c03a2b", function (v) { return (Math.round(v * 10) / 10) + "%"; }, [4, 5, 6, 7, 8, 9]);
+})();
+</script>
