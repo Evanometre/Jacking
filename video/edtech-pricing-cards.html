@@ -42,7 +42,9 @@ figcaption b { color: var(--stage-ink); font-weight: 600; }
 .stage { display: grid; align-content: center; gap: 2.2cqw; min-height: 0; }
 .foot { display: flex; justify-content: space-between; align-items: center; font-size: 1.45cqw; }
 .who { display: flex; align-items: center; gap: 1cqw; }
-.av { width: 3.6cqw; height: 3.6cqw; border-radius: 50%; background: var(--hl-handle); display: grid; place-items: center; font: 700 1.7cqw var(--display); color: var(--ink); }
+.av { width: 4cqw; height: 4cqw; background: url("data:image/png;base64,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") center / contain no-repeat; }
+.av.big { position: absolute; right: 6cqw; top: 50%; width: 17cqw; height: 17cqw; transform: translateY(-50%); }
+.list.narrow { max-width: 66cqw; }
 .who small { display: block; font-size: 1.2cqw; color: var(--ink-2); }
 .who strong { font: 700 1.55cqw var(--display); }
 .save { display: flex; align-items: center; gap: 0.8cqw; font: 600 1.45cqw var(--body); letter-spacing: 0.03em; }
@@ -155,7 +157,7 @@ svg text { font-family: var(--body); }
         <div class="big xl num"><span class="neg" style="text-decoration:line-through;text-decoration-thickness:0.08em">₹2,599</span>?</div>
         <p class="sub">The pricing model said charge <span class="sel">73% more</span>. The team ignored it, and contribution still rose 36.7%.</p>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -169,7 +171,7 @@ svg text { font-family: var(--body); }
         <div class="pricetag num">₹1,499<small>per month</small></div>
         <div class="chips"><span class="chip">Recorded courses</span><span class="chip">Tests</span><span class="chip">Live classes</span><span class="chip">Mentor and career support</span></div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -192,7 +194,7 @@ svg text { font-family: var(--body); }
           </table>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -206,7 +208,7 @@ svg text { font-family: var(--body); }
         <div class="big" style="font-size:5.6cqw">(Price − Variable cost) × Subscribers</div>
         <p class="sub wide">Not revenue and not subscriber count. <span class="sel">Contribution</span> is what is left to run the business.</p>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -220,7 +222,7 @@ svg text { font-family: var(--body); }
         <div class="share"><div class="s1">65%</div><div class="s2">35%</div></div>
         <div class="legend"><span>Students: more price-sensitive</span><span>Working professionals: less price-sensitive</span></div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -238,7 +240,7 @@ svg text { font-family: var(--body); }
           <div class="step" style="height:100%"><em>CareerEdge</em><b class="num">₹2,299</b><span>Courses + mentor support</span></div>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -254,7 +256,7 @@ svg text { font-family: var(--body); }
           <div class="chartwrap"><h4>Monthly churn</h4><svg id="c-churn" viewBox="0 0 400 230" role="img" aria-label="Monthly churn rises from 4.7 percent at ₹1,199 to 8.3 percent at ₹1,899"></svg></div>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -268,7 +270,7 @@ svg text { font-family: var(--body); }
         <div class="big">The math says <span class="sel">charge more, forever.</span></div>
         <p class="sub wide">With this demand curve revenue never peaks. That comes from the assumption. It is not proof customers will pay unlimited prices.</p>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -299,7 +301,7 @@ svg text { font-family: var(--body); }
           <text x="664" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#c03a2b">Model pick ₹2,599</text>
         </svg>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -311,7 +313,7 @@ svg text { font-family: var(--body); }
       <div class="stage">
         <div class="big">A model can give a precise number and <span class="sel">still be wrong about the world.</span></div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -326,7 +328,7 @@ svg text { font-family: var(--body); }
         <p class="k" style="margin-top:1cqw">Ask</p>
         <div class="big"><span class="sel">What should we charge whom, and for what?</span></div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -342,7 +344,7 @@ svg text { font-family: var(--body); }
           <div class="tier pro"><span class="k">Top</span><h3>Pro</h3><div class="p num">₹2,199</div><p>Plus + mentor and career support</p></div>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -361,7 +363,7 @@ svg text { font-family: var(--body); }
           <div class="rule"><b>20%</b><span>Of professionals need a path to Pro</span></div>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -389,7 +391,7 @@ svg text { font-family: var(--body); }
           </div>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -410,7 +412,7 @@ svg text { font-family: var(--body); }
           </table>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
@@ -420,7 +422,8 @@ svg text { font-family: var(--body); }
     <div class="card">
       <div class="meta"><span>What this case shows</span><span>Illustrative case, constructed data</span></div>
       <div class="stage">
-        <div class="list">
+        <div class="av big" role="img" aria-label="Toledah logo"></div>
+        <div class="list narrow">
           <div><i>1</i>Revenue isn't value. Look at contribution.</div>
           <div><i>2</i>Segments pay different amounts.</div>
           <div><i>3</i>Structure can matter more than the headline price.</div>
@@ -429,7 +432,7 @@ svg text { font-family: var(--body); }
           <div><i>6</i>Treat pricing as an experiment.</div>
         </div>
       </div>
-      <div class="foot"><div class="who"><div class="av">T</div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
 
