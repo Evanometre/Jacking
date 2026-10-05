@@ -134,8 +134,36 @@ table.t { border-collapse: collapse; width: 100%; font-size: 2.3cqw; }
 .list div:last-child { border-bottom: 0; }
 .list i { font: 600 1.6cqw var(--body); font-style: normal; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 
+
+/* equation + stat rows */
+.eq { display: flex; flex-wrap: nowrap; align-items: flex-end; gap: 2cqw; }
+.eq .t1 { display: grid; gap: 0.6cqw; }
+.eq .t1 b { font: 800 5.6cqw/1 var(--display); letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
+.eq .t1 span { font: 600 1.35cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.eq .op { font: 700 3.6cqw/1 var(--display); color: var(--ink-3); padding-bottom: 2cqw; }
+.eq .t1.res b { color: var(--ink); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; }
+.stats div { display: grid; gap: 0.6cqw; border-top: 2px solid var(--ink); padding-top: 1.4cqw; }
+.stats b { font: 800 6.4cqw/1 var(--display); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.stats span { font: 600 1.6cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.seg { display: grid; grid-template-columns: 65fr 35fr; gap: 2px; }
+.seg > div { display: grid; gap: 0.8cqw; padding: 2cqw; }
+.seg .a { background: var(--ink); color: var(--paper-2); border-radius: 0.8cqw 0 0 0.8cqw; }
+.seg .b { background: var(--hl-handle); color: var(--ink); border-radius: 0 0.8cqw 0.8cqw 0; }
+.seg b { font: 800 6cqw/1 var(--display); letter-spacing: -0.04em; }
+.seg h3 { margin: 0; font: 700 2.2cqw var(--display); }
+.seg p { margin: 0; font: 500 1.7cqw/1.35 var(--body); opacity: 0.85; }
+.checks { display: grid; gap: 0; }
+.checks div { display: grid; grid-template-columns: 4cqw 1fr; align-items: baseline; padding-block: 1cqw; border-bottom: 1px solid var(--line); font: 700 2.4cqw/1.25 var(--display); letter-spacing: -0.02em; }
+.checks div:last-child { border-bottom: 0; }
+.checks i { width: 1.5cqw; height: 1.5cqw; border: 0.25cqw solid var(--ink); border-radius: 50%; display: block; }
+.checks.two-col { grid-template-columns: 1fr 1fr; column-gap: 3cqw; }
+.checks.two-col div { font-size: 2.3cqw; padding-block: 1cqw; }
+.q { font: 800 3.8cqw/1.1 var(--display); letter-spacing: -0.03em; margin: 0; }
+
 svg text { font-family: var(--body); }
 .chartwrap { display: grid; gap: 1cqw; }
+.chartwrap svg { width: 100%; max-height: 27cqw; }
 .chartwrap h4 { margin: 0; font: 600 1.45cqw var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 
 .tip { font-size: 13px; color: #8d8d87; line-height: 1.5; }
@@ -145,337 +173,179 @@ svg text { font-family: var(--body); }
 <div class="deck">
   <header>
     <h1>EdTech pricing video: card deck</h1>
-    <p>16 cards in 16:9, in script order. Screenshot or screen-record each card, then drop it into your editor. Source: Toledah Case Library, illustrative data.</p>
+    <p>20 cards in 16:9, in script order. Screenshot or screen-record each card, or download the PNGs. Hypothetical case, illustrative figures.</p>
   </header>
-
-  <!-- 01 HOOK -->
   <figure>
-    <figcaption><b>01</b> Hook</figcaption>
+    <figcaption><b>01</b> Title</figcaption>
     <div class="card">
-      <div class="meta"><span>Pricing strategy</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <div class="big xl num"><span class="neg" style="text-decoration:line-through;text-decoration-thickness:0.08em">₹2,599</span>?</div>
-        <p class="sub">The pricing model said charge <span class="sel">73% more</span>. The team ignored it, and contribution still rose 36.7%.</p>
-      </div>
+      <div class="meta"><span>A hypothetical case</span><span>Toledah Case Library</span></div>
+      <div class="stage"><p class="k">Pricing strategy</p><div class="big xl" style="font-size:7.4cqw">Should an EdTech platform <span class="sel">raise its prices</span>?</div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 02 SETUP -->
   <figure>
-    <figcaption><b>02</b> The setup</figcaption>
+    <figcaption><b>02</b> The dilemma</figcaption>
     <div class="card">
-      <div class="meta"><span>The platform</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <p class="k">One plan, everything included</p>
-        <div class="pricetag num">₹1,499<small>per month</small></div>
-        <div class="chips"><span class="chip">Recorded courses</span><span class="chip">Tests</span><span class="chip">Live classes</span><span class="chip">Mentor and career support</span></div>
-      </div>
+      <div class="meta"><span>The tension</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="big">Charge more and you make more money.</div><div class="big" style="color:var(--neg)">Charge too much and you make less than before.</div><p class="sub wide">When you raise your price, some customers leave.</p></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 03 CURRENT ECONOMICS -->
   <figure>
-    <figcaption><b>03</b> Current economics</figcaption>
+    <figcaption><b>03</b> The real question</figcaption>
     <div class="card">
-      <div class="meta"><span>Monthly economics</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <div class="two skew">
-          <h2>A healthy business with one price for everyone.</h2>
-          <table class="t">
-            <tr><th>Metric</th><th>Current</th></tr>
-            <tr><td>Subscribers</td><td>8,000</td></tr>
-            <tr><td>Monthly revenue</td><td>₹11,992,000</td></tr>
-            <tr><td>Variable cost / subscriber</td><td>₹410</td></tr>
-            <tr><td>Monthly contribution</td><td>₹8,712,000</td></tr>
-            <tr><td>Contribution margin</td><td>72.6%</td></tr>
-            <tr><td>Monthly churn</td><td>5.8%</td></tr>
-          </table>
-        </div>
-      </div>
+      <div class="meta"><span>Reframing</span><span>Toledah Case Library</span></div>
+      <div class="stage"><p class="k">Instead of</p><div class="big" style="color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:0.06em">How much should we charge?</div><p class="k" style="margin-top:1cqw">Ask</p><div class="big">What price gives the <span class="sel">best business outcome</span>?</div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 04 FORMULA -->
   <figure>
-    <figcaption><b>04</b> The measure</figcaption>
+    <figcaption><b>04</b> The platform</figcaption>
     <div class="card">
-      <div class="meta"><span>What we optimize</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <p class="k">Contribution</p>
-        <div class="big" style="font-size:5.6cqw">(Price − Variable cost) × Subscribers</div>
-        <p class="sub wide">Not revenue and not subscriber count. <span class="sel">Contribution</span> is what is left to run the business.</p>
-      </div>
+      <div class="meta"><span>The hypothetical company</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">An online learning platform with one plan.</h2><div class="stats"><div><b>8,000</b><span>Subscribers</span></div><div><b>₹1,499</b><span>Per month</span></div><div><b>₹11.99M</b><span>Monthly revenue</span></div></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 05 SEGMENTS -->
   <figure>
-    <figcaption><b>05</b> The real problem</figcaption>
+    <figcaption><b>05</b> Contribution</figcaption>
     <div class="card">
-      <div class="meta"><span>Customer base</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <h2>Same price. Very different willingness to pay.</h2>
-        <div class="share"><div class="s1">65%</div><div class="s2">35%</div></div>
-        <div class="legend"><span>Students: more price-sensitive</span><span>Working professionals: less price-sensitive</span></div>
-      </div>
+      <div class="meta"><span>Revenue isn’t profit</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">Every subscriber has a variable cost.</h2><div class="eq"><div class="t1"><b>₹1,499</b><span>Price</span></div><div class="op">−</div><div class="t1"><b>₹410</b><span>Variable cost</span></div><div class="op">=</div><div class="t1 res"><b>₹1,089</b><span>Contribution per subscriber</span></div></div><div class="eq"><div class="t1"><b>₹1,089</b><span>Per subscriber</span></div><div class="op">×</div><div class="t1"><b>8,000</b><span>Subscribers</span></div><div class="op">≈</div><div class="t1 res"><b>₹8.71M</b><span>Monthly contribution</span></div></div><p class="sub wide" style="font-size:1.9cqw">Variable costs: platform usage, content delivery, support and more.</p></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 06 COMPETITORS -->
   <figure>
-    <figcaption><b>06</b> The market</figcaption>
+    <figcaption><b>06</b> Demand</figcaption>
     <div class="card">
-      <div class="meta"><span>Competitive context</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <h2>Priced like SkillPro. Delivering closer to CareerEdge.</h2>
-        <div class="steps">
-          <div class="step" style="height:46%"><em>EduMax</em><b class="num">₹999</b><span>Recorded courses</span></div>
-          <div class="step" style="height:66%"><em>SkillPro</em><b class="num">₹1,499</b><span>Courses + tests</span></div>
-          <div class="step us" style="height:82%"><em>This platform</em><b class="num">₹1,499</b><span>Courses, tests, live classes, mentor support</span></div>
-          <div class="step" style="height:100%"><em>CareerEdge</em><b class="num">₹2,299</b><span>Courses + mentor support</span></div>
-        </div>
-      </div>
+      <div class="meta"><span>Historical demand data</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">As price increases, demand decreases.</h2><div class="chartwrap"><h4>New subscribers per month</h4><svg viewBox="0 0 800 310" preserveAspectRatio="xMinYMid meet" role="img" aria-label="New subscribers per month: about 2,350 at ₹1,199, 1,920 at ₹1,499, 1,250 at ₹1,899"><line x1="90" x2="760" y1="260.0" y2="260.0" stroke="#c9c9c4"/><text x="76" y="264.0" text-anchor="end" font-size="14" fill="#85857f">1,000</text><line x1="90" x2="760" y1="186.7" y2="186.7" stroke="#c9c9c4"/><text x="76" y="190.7" text-anchor="end" font-size="14" fill="#85857f">1,500</text><line x1="90" x2="760" y1="113.3" y2="113.3" stroke="#c9c9c4"/><text x="76" y="117.3" text-anchor="end" font-size="14" fill="#85857f">2,000</text><line x1="90" x2="760" y1="40.0" y2="40.0" stroke="#c9c9c4"/><text x="76" y="44.0" text-anchor="end" font-size="14" fill="#85857f">2,500</text><line x1="90" x2="760" y1="260.0" y2="260.0" stroke="#85857f" stroke-width="1.5"/><path d="M158.2 62.0 L364.9 125.1 L640.4 223.3" fill="none" stroke="#1a1a19" stroke-width="3.5" stroke-linejoin="round"/><circle cx="158.2" cy="62.0" r="7" fill="#1a1a19" stroke="#e8e8e5" stroke-width="3"/><text x="158.2" y="46.0" text-anchor="middle" font-size="22" font-weight="800" fill="#1a1a19">2,350</text><text x="158.2" y="288" text-anchor="middle" font-size="16" font-weight="600" fill="#4a4a47">₹1,199</text><circle cx="364.9" cy="125.1" r="7" fill="#1a1a19" stroke="#e8e8e5" stroke-width="3"/><text x="364.9" y="109.1" text-anchor="middle" font-size="22" font-weight="800" fill="#1a1a19">1,920</text><text x="364.9" y="288" text-anchor="middle" font-size="16" font-weight="600" fill="#4a4a47">₹1,499</text><circle cx="640.4" cy="223.3" r="7" fill="#1a1a19" stroke="#e8e8e5" stroke-width="3"/><text x="640.4" y="207.3" text-anchor="middle" font-size="22" font-weight="800" fill="#1a1a19">1,250</text><text x="640.4" y="288" text-anchor="middle" font-size="16" font-weight="600" fill="#4a4a47">₹1,899</text><text x="425" y="308" text-anchor="middle" font-size="13" fill="#85857f">Monthly price</text></svg></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 07 DEMAND -->
   <figure>
-    <figcaption><b>07</b> How customers respond</figcaption>
+    <figcaption><b>07</b> The balance</figcaption>
     <div class="card">
-      <div class="meta"><span>Historical price observations</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <h2 style="font-size:4.2cqw">Raise the price and fewer people join and more people leave.</h2>
-        <div class="two">
-          <div class="chartwrap"><h4>New subscribers per month</h4><svg id="c-subs" viewBox="0 0 400 230" role="img" aria-label="New subscribers per month falls from 2,350 at ₹1,199 to 1,250 at ₹1,899"></svg></div>
-          <div class="chartwrap"><h4>Monthly churn</h4><svg id="c-churn" viewBox="0 0 400 230" role="img" aria-label="Monthly churn rises from 4.7 percent at ₹1,199 to 8.3 percent at ₹1,899"></svg></div>
-        </div>
-      </div>
+      <div class="meta"><span>What we are looking for</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="big">Losing customers isn’t necessarily bad.</div><p class="sub wide">Lose 10% of your customers but earn substantially more from the ones who stay, and the business can become <span class="sel">healthier</span>.</p><p class="k">So we look for the point where the two effects balance out.</p></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 08 NO OPTIMUM -->
   <figure>
-    <figcaption><b>08</b> Why "just raise it" fails</figcaption>
+    <figcaption><b>08</b> Customer segments</figcaption>
     <div class="card">
-      <div class="meta"><span>Single-plan model</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <p class="k">Professional elasticity: −0.5</p>
-        <div class="big">The math says <span class="sel">charge more, forever.</span></div>
-        <p class="sub wide">With this demand curve revenue never peaks. That comes from the assumption. It is not proof customers will pay unlimited prices.</p>
-      </div>
+      <div class="meta"><span>Two kinds of customer</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">Same price. Different willingness to pay.</h2><div class="seg"><div class="a"><b>65%</b><h3>Students</h3><p>Recorded courses and tests</p></div><div class="b"><b>35%</b><h3>Working professionals</h3><p>Live classes, mentorship, career support</p></div></div><p class="q">Should <span class="sel">everyone</span> even have the same price?</p></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 09 EXTRAPOLATION -->
   <figure>
-    <figcaption><b>09</b> The extrapolation</figcaption>
+    <figcaption><b>09</b> The market</figcaption>
     <div class="card">
-      <div class="meta"><span>Price axis, ₹ per month</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <h2 style="font-size:4.4cqw">The model's pick sits far outside the data.</h2>
-        <svg viewBox="0 0 800 250" role="img" aria-label="Observed prices span ₹1,199 to ₹1,899. The model's ₹2,599 pick is 73 percent above the current ₹1,499 and well beyond that range.">
-          <rect x="135.2" y="70" width="264.4" height="70" fill="#f6e6b0"/>
-          <text x="267" y="62" text-anchor="middle" font-size="15" font-weight="600" fill="#4a4a47">Observed range ₹1,199 to ₹1,899</text>
-          <line x1="60" y1="140" x2="740" y2="140" stroke="#85857f" stroke-width="1.5"/>
-          <g font-size="14" fill="#85857f" text-anchor="middle">
-            <line x1="60" y1="140" x2="60" y2="146" stroke="#85857f"/><text x="60" y="165">1,000</text>
-            <line x1="248.9" y1="140" x2="248.9" y2="146" stroke="#85857f"/><text x="248.9" y="165">1,500</text>
-            <line x1="437.8" y1="140" x2="437.8" y2="146" stroke="#85857f"/><text x="437.8" y="165">2,000</text>
-            <line x1="626.7" y1="140" x2="626.7" y2="146" stroke="#85857f"/><text x="626.7" y="165">2,500</text>
-          </g>
-          <path d="M248.5 104 H664" stroke="#c03a2b" stroke-width="2" fill="none" stroke-dasharray="6 5"/>
-          <text x="456" y="96" text-anchor="middle" font-size="22" font-weight="800" fill="#c03a2b">+73%</text>
-          <circle cx="248.5" cy="104" r="8" fill="#1a1a19"/>
-          <text x="248.5" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#1a1a19">Current ₹1,499</text>
-          <circle cx="513" cy="104" r="8" fill="#23744a"/>
-          <text x="513" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#23744a">Chosen Pro ₹2,199</text>
-          <circle cx="664" cy="104" r="8" fill="#fff" stroke="#c03a2b" stroke-width="3"/>
-          <text x="664" y="230" text-anchor="middle" font-size="16" font-weight="700" fill="#c03a2b">Model pick ₹2,599</text>
-        </svg>
-      </div>
+      <div class="meta"><span>Competitive landscape</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">Our company sits at ₹1,499.</h2>
+<div class="steps"><div class="step" style="height:46%"><em>Competitor</em><b class="num">₹999</b><span>Recorded courses</span></div><div class="step" style="height:66%"><em>Competitor</em><b class="num">₹1,499</b><span>Courses + tests</span></div><div class="step us" style="height:82%"><em>Our company</em><b class="num">₹1,499</b><span>More value than the basic competitor</span></div><div class="step" style="height:100%"><em>Premium competitor</em><b class="num">₹2,299</b><span>Courses, live instruction, mentoring</span></div></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 10 QUOTE -->
   <figure>
-    <figcaption><b>10</b> The lesson</figcaption>
+    <figcaption><b>10</b> The idea</figcaption>
     <div class="card">
-      <div class="meta"><span>Model confidence</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <div class="big">A model can give a precise number and <span class="sel">still be wrong about the world.</span></div>
-      </div>
+      <div class="meta"><span>Segmentation</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="big">Instead of one plan, what if we create <span class="sel">three</span>?</div><p class="sub wide">Raising the price for everyone could push price-sensitive customers away. Leaving it alone leaves money on the table with customers who would pay more for premium services.</p></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 11 BETTER QUESTION -->
   <figure>
-    <figcaption><b>11</b> The better question</figcaption>
+    <figcaption><b>11</b> The three tiers</figcaption>
     <div class="card">
-      <div class="meta"><span>Reframing the problem</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <p class="k">Instead of</p>
-        <div class="big" style="color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:0.06em">How high can we go?</div>
-        <p class="k" style="margin-top:1cqw">Ask</p>
-        <div class="big"><span class="sel">What should we charge whom, and for what?</span></div>
-      </div>
+      <div class="meta"><span>Proposed pricing</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="tiers"><div class="tier"><span class="k">First</span><h3>Basic</h3><div class="p num">₹1,199</div><p>Recorded courses and tests</p></div><div class="tier plus"><span class="k">Second</span><h3>Plus</h3><div class="p num">₹1,599</div><p>Everything in Basic, plus live classes</p></div><div class="tier pro"><span class="k">Third</span><h3>Pro</h3><div class="p num">₹2,199</div><p>Everything in Plus, plus mentor and career support</p></div></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 12 TIERS -->
   <figure>
-    <figcaption><b>12</b> The recommended tiers</figcaption>
+    <figcaption><b>12</b> Optimization</figcaption>
     <div class="card">
-      <div class="meta"><span>Pilot pricing architecture</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <div class="tiers">
-          <div class="tier"><span class="k">Entry</span><h3>Basic</h3><div class="p num">₹1,199</div><p>Recorded courses + tests</p></div>
-          <div class="tier plus"><span class="k">Mid</span><h3>Plus</h3><div class="p num">₹1,599</div><p>Basic + live classes</p></div>
-          <div class="tier pro"><span class="k">Top</span><h3>Pro</h3><div class="p num">₹2,199</div><p>Plus + mentor and career support</p></div>
-        </div>
-      </div>
+      <div class="meta"><span>The model has constraints</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">Find the highest contribution, within the real business.</h2><div class="checks"><div><i></i>A healthy contribution margin</div><div><i></i>Pro not priced too close to Plus</div><div><i></i>Plus not priced too close to Basic</div><div><i></i>No unreasonable increase for existing customers</div><div><i></i>A path into Pro for a meaningful share of professionals</div></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 13 GUARDRAILS -->
   <figure>
-    <figcaption><b>13</b> The guardrails</figcaption>
+    <figcaption><b>13</b> The result</figcaption>
     <div class="card">
-      <div class="meta"><span>Constraints on the optimization</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <h2 style="font-size:4.4cqw">The model could not just pick the biggest number.</h2>
-        <div class="rules">
-          <div class="rule"><b>65%</b><span>Minimum contribution margin on every tier</span></div>
-          <div class="rule"><b>25%</b><span>Each tier priced at least this far above the one below</span></div>
-          <div class="rule"><b>₹1,199</b><span>Maximum price for Basic, so students stay in</span></div>
-          <div class="rule"><b>10%</b><span>Maximum effective increase for existing customers</span></div>
-          <div class="rule"><b>20%</b><span>Of professionals need a path to Pro</span></div>
-        </div>
-      </div>
+      <div class="meta"><span>Current vs. recommended</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="two skew"><h2>Fewer customers. More contribution.</h2><table class="t"><tr><th>Monthly</th><th>Current</th><th>Three tiers</th></tr><tr><td>Subscribers</td><td>8,000</td><td>7,367</td></tr><tr><td>Revenue</td><td>₹11.99M</td><td>₹14.93M</td></tr><tr><td>Contribution</td><td>₹8.71M</td><td>₹11.91M</td></tr></table></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 14 RESULT -->
   <figure>
     <figcaption><b>14</b> The result</figcaption>
     <div class="card">
-      <div class="meta"><span>Current vs. recommended</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <div class="two skew">
-          <div class="delta"><div><span class="k">Contribution</span><b class="pos">+36.7%</b></div><div><span class="k">Subscribers</span><b class="neg">−7.9%</b></div></div>
-          <div class="ba">
-            <div>
-              <h4>Monthly contribution</h4>
-              <div class="bar"><span>Current</span><div class="track"><div class="fill" style="width:73.2%"></div></div></div>
-              <div class="bar new"><span>Pilot</span><div class="track"><div class="fill" style="width:100%"></div></div></div>
-              <div class="bar" style="margin:0"><span></span><div class="track"><span class="v">₹8.71M → ₹11.91M</span></div></div>
-            </div>
-            <div>
-              <h4>Subscribers</h4>
-              <div class="bar"><span>Current</span><div class="track"><div class="fill" style="width:100%"></div></div></div>
-              <div class="bar new"><span>Pilot</span><div class="track"><div class="fill" style="width:92.1%"></div></div></div>
-              <div class="bar" style="margin:0"><span></span><div class="track"><span class="v">8,000 → 7,367</span></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
-    </div>
-  </figure>
-
-  <!-- 15 TABLE -->
-  <figure>
-    <figcaption><b>15</b> Full comparison</figcaption>
-    <div class="card">
       <div class="meta"><span>Model estimate</span><span>Toledah Case Library</span></div>
-      <div class="stage">
-        <div class="two skew">
-          <h2>Less volume. Stronger unit economics.</h2>
-          <table class="t">
-            <tr><th>Metric</th><th>Current</th><th>Pilot</th></tr>
-            <tr><td>Subscribers</td><td>8,000</td><td>7,367</td></tr>
-            <tr><td>Monthly revenue</td><td>₹11,992,000</td><td>₹14,929,009</td></tr>
-            <tr><td>Monthly contribution</td><td>₹8,712,000</td><td>₹11,908,443</td></tr>
-            <tr><td>Contribution margin</td><td>72.6%</td><td>79.8%</td></tr>
-          </table>
-        </div>
-      </div>
+      <div class="stage"><div class="two skew"><div class="delta"><div><span class="k">Contribution</span><b class="pos">+36.7%</b></div><div><span class="k">Subscribers</span><b class="neg">−7.9%</b></div></div>
+<div class="ba"><div><h4>Monthly contribution</h4><div class="bar"><span>Current</span><div class="track"><div class="fill" style="width:73.2%"></div></div></div><div class="bar new"><span>Tiers</span><div class="track"><div class="fill" style="width:100%"></div></div></div><div class="bar" style="margin:0"><span></span><div class="track"><span class="v">₹8.71M → ₹11.91M</span></div></div></div>
+<div><h4>Subscribers</h4><div class="bar"><span>Current</span><div class="track"><div class="fill" style="width:100%"></div></div></div><div class="bar new"><span>Tiers</span><div class="track"><div class="fill" style="width:92.1%"></div></div></div><div class="bar" style="margin:0"><span></span><div class="track"><span class="v">8,000 → 7,367</span></div></div></div></div></div></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <!-- 16 TAKEAWAYS -->
   <figure>
-    <figcaption><b>16</b> Takeaways</figcaption>
+    <figcaption><b>15</b> The point</figcaption>
     <div class="card">
-      <div class="meta"><span>What this case shows</span><span>Illustrative case, constructed data</span></div>
-      <div class="stage">
-        <div class="av big" role="img" aria-label="Toledah logo"></div>
-        <div class="list narrow">
-          <div><i>1</i>Revenue isn't value. Look at contribution.</div>
-          <div><i>2</i>Segments pay different amounts.</div>
-          <div><i>3</i>Structure can matter more than the headline price.</div>
-          <div><i>4</i>Optimization informs judgment. It doesn't replace it.</div>
-          <div><i>5</i>Be skeptical of any model far outside its data.</div>
-          <div><i>6</i>Treat pricing as an experiment.</div>
-        </div>
-      </div>
+      <div class="meta"><span>The objective</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="big">The objective wasn’t the most customers.</div><div class="big">It was <span class="sel">a better business.</span></div><p class="sub wide">Sometimes, more customers doesn’t mean more money.</p></div>
       <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
     </div>
   </figure>
-
-  <p class="tip">The case company and figures are illustrative; credit the Toledah Case Library in your description.</p>
+  <figure>
+    <figcaption><b>16</b> Extrapolation</figcaption>
+    <div class="card">
+      <div class="meta"><span>Price axis, ₹ per month</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">The model suggests ₹2,599 for Pro. That is a 73% jump.</h2>
+<svg viewBox="0 0 800 250" role="img" aria-label="Historical data covers ₹1,199 to ₹1,899. The model's ₹2,599 Pro suggestion is about 73 percent above ₹1,499 and far outside that range.">
+<rect x="135.2" y="70" width="264.4" height="70" fill="#f6e6b0"/>
+<text x="267" y="62" text-anchor="middle" font-size="15" font-weight="600" fill="#4a4a47">Our data: ₹1,199 to ₹1,899</text>
+<line x1="60" y1="140" x2="740" y2="140" stroke="#85857f" stroke-width="1.5"/>
+<g font-size="14" fill="#85857f" text-anchor="middle"><line x1="60" y1="140" x2="60" y2="146" stroke="#85857f"/><text x="60" y="165">1,000</text><line x1="248.9" y1="140" x2="248.9" y2="146" stroke="#85857f"/><text x="248.9" y="165">1,500</text><line x1="437.8" y1="140" x2="437.8" y2="146" stroke="#85857f"/><text x="437.8" y="165">2,000</text><line x1="626.7" y1="140" x2="626.7" y2="146" stroke="#85857f"/><text x="626.7" y="165">2,500</text></g>
+<path d="M248.5 104 H664" stroke="#c03a2b" stroke-width="2" fill="none" stroke-dasharray="6 5"/>
+<text x="456" y="96" text-anchor="middle" font-size="22" font-weight="800" fill="#c03a2b">+73%</text>
+<circle cx="248.5" cy="104" r="8" fill="#1a1a19"/><text x="248.5" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#1a1a19">Today ₹1,499</text>
+<circle cx="513" cy="104" r="8" fill="#23744a"/><text x="513" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#23744a">Recommended Pro ₹2,199</text>
+<circle cx="664" cy="104" r="8" fill="#fff" stroke="#c03a2b" stroke-width="3"/><text x="664" y="230" text-anchor="middle" font-size="16" font-weight="700" fill="#c03a2b">Model's suggestion ₹2,599</text></svg></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption><b>17</b> The limit</figcaption>
+    <div class="card">
+      <div class="meta"><span>Model confidence</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="big">A model can give a very precise answer… and <span class="sel">still be wrong about the real world.</span></div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption><b>18</b> Test it</figcaption>
+    <div class="card">
+      <div class="meta"><span>Measure what happens</span><span>Toledah Case Library</span></div>
+      <div class="stage"><h2 style="font-size:4.4cqw">Pricing isn’t something to decide once and forget.</h2><div class="checks two-col"><div><i></i>How many choose Basic, Plus, Pro?</div><div><i></i>How many customers upgrade?</div><div><i></i>How many cancel?</div><div><i></i>Does conversion change?</div><div><i></i>Does churn increase?</div><div><i></i>Does revenue per customer improve?</div></div><p class="q" style="font-size:3cqw">Most important: does <span class="sel">contribution</span> improve?</p></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption><b>19</b> The answer</figcaption>
+    <div class="card">
+      <div class="meta"><span>So, should they raise prices?</span><span>Toledah Case Library</span></div>
+      <div class="stage"><div class="big">Yes. But that’s not the lesson.</div><div class="checks"><div><i></i>Understand what customers value</div><div><i></i>Understand how sensitive they are to price</div><div><i></i>Understand the economics of the business</div></div></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
+  <figure>
+    <figcaption><b>20</b> The better question</figcaption>
+    <div class="card">
+      <div class="meta"><span>Closing</span><span>Toledah Case Library</span></div>
+      <div class="av big" role="img" aria-label="Toledah logo"></div><div class="stage" style="max-width:68cqw;padding-right:0"><div class="big" style="font-size:5.4cqw">What should we charge whom, and for what?</div><p class="sub wide">The difference between simply changing a price and <span class="sel">actually optimizing a business.</span></p></div>
+      <div class="foot"><div class="who"><div class="av"></div><div><small>toledah.com</small><strong>Toledah</strong></div></div><div class="save"><i></i>SAVE for LATER</div></div>
+    </div>
+  </figure>
 </div>
-
-<script>
-(function () {
-  var prices = [1199, 1299, 1399, 1499, 1599, 1699, 1799, 1899];
-  var subs = [2350, 2180, 2040, 1920, 1770, 1610, 1430, 1250];
-  var churn = [4.7, 4.9, 5.2, 5.8, 6.1, 6.7, 7.4, 8.3];
-  var NS = "http://www.w3.org/2000/svg";
-  function el(tag, attrs, text) {
-    var n = document.createElementNS(NS, tag);
-    for (var k in attrs) n.setAttribute(k, attrs[k]);
-    if (text != null) n.textContent = text;
-    return n;
-  }
-  function line(id, ys, lo, hi, color, fmt, ticks) {
-    var svg = document.getElementById(id);
-    var L = 46, R = 18, T = 26, B = 40, W = 400, H = 230;
-    var x = function (i) { return L + (i / (prices.length - 1)) * (W - L - R); };
-    var y = function (v) { return T + (1 - (v - lo) / (hi - lo)) * (H - T - B); };
-    ticks.forEach(function (t) {
-      svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), stroke: "#c9c9c4", "stroke-width": 1 }));
-      svg.appendChild(el("text", { x: L - 8, y: y(t) + 4, "text-anchor": "end", "font-size": 12, fill: "#85857f" }, fmt(t)));
-    });
-    svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(lo), y2: y(lo), stroke: "#85857f", "stroke-width": 1.5 }));
-    prices.forEach(function (p, i) {
-      svg.appendChild(el("text", { x: x(i), y: H - 20, "text-anchor": "middle", "font-size": 11, fill: "#85857f" }, p.toLocaleString("en-US")));
-    });
-    svg.appendChild(el("text", { x: (L + W - R) / 2, y: H - 4, "text-anchor": "middle", "font-size": 11, fill: "#85857f" }, "Monthly price (₹)"));
-    var d = ys.map(function (v, i) { return (i ? "L" : "M") + x(i) + " " + y(v); }).join(" ");
-    svg.appendChild(el("path", { d: d, fill: "none", stroke: color, "stroke-width": 3, "stroke-linejoin": "round", "stroke-linecap": "round" }));
-    ys.forEach(function (v, i) {
-      svg.appendChild(el("circle", { cx: x(i), cy: y(v), r: 4.5, fill: color, stroke: "#e8e8e5", "stroke-width": 2 }));
-    });
-    var last = ys.length - 1;
-    svg.appendChild(el("text", { x: x(0) + 2, y: y(ys[0]) - 12, "font-size": 14, "font-weight": 800, fill: "#1a1a19" }, fmt(ys[0])));
-    var below = ys[last] < ys[0];
-    svg.appendChild(el("text", { x: x(last), y: y(ys[last]) + (below ? 22 : -12), "text-anchor": "end", "font-size": 14, "font-weight": 800, fill: "#1a1a19" }, fmt(ys[last])));
-  }
-  line("c-subs", subs, 1000, 2500, "#1a1a19", function (v) { return v.toLocaleString("en-US"); }, [1000, 1500, 2000, 2500]);
-  line("c-churn", churn, 4, 9, "#c03a2b", function (v) { return (Math.round(v * 10) / 10) + "%"; }, [4, 5, 6, 7, 8, 9]);
-})();
-</script>
